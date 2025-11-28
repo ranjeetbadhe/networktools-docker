@@ -1,10 +1,10 @@
-FROM rockylinux:9 
+FROM rockylinux:9
 
 LABEL maintainer="ranjeet.badhe@gmail.com" \
       description="Rocky Linux container with full networking tools + telnet, openssl, jq" \
-      version="2.2"
+      version="2.3"
 
-# Install EPEL for inetutils (telnet/telnetd) on EL9, plus networking toolset
+# Install EPEL plus networking tools (including telnet client/server)
 RUN dnf -y install \
         --allowerasing \
         --setopt=install_weak_deps=False \
@@ -32,9 +32,10 @@ RUN dnf -y install \
         which \
         openssl \
         jq \
-        inetutils \
-        inetutils-telnetd && \
+        telnet \
+        telnet-server && \
     dnf clean all && rm -rf /var/cache/dnf
 
 WORKDIR /root
 CMD ["/bin/bash"]
+
