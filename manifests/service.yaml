@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: networktools
+  namespace: networktools
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: networktools
+  template:
+    metadata:
+      labels:
+        app: networktools
+    spec:
+      containers:
+        - name: networktools
+          image: badheranjeet/networktools:latest
+          imagePullPolicy: Always
+          command: ["/bin/bash", "-c"]
+          args: ["sleep infinity"]
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
