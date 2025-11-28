@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: networktools
-          image: badheranjeet/networktools:latest
+          image: badheranjeet/networktools:ocp
           imagePullPolicy: Always
           command: ["/bin/bash", "-c"]
           args: ["sleep infinity"]
