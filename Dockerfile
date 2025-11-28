@@ -36,6 +36,7 @@ RUN dnf -y install \
         telnet-server && \
     dnf clean all && rm -rf /var/cache/dnf
 
-WORKDIR /root
-CMD ["/bin/bash"]
+WORKDIR /home/default
+# Always-running process to keep the pod alive in OpenShift
+ENTRYPOINT ["sleep", "infinity"]
 
